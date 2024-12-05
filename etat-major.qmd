@@ -1,0 +1,63 @@
+---
+title: ""
+
+execute:
+  echo: false
+  warning: false
+---
+
+```{r}
+library(dplyr)
+library(leaflet)
+```
+
+
+
+
+::: {.grid}
+
+::: {.g-col-5}
+
+```{r}
+# library(stringi)
+# stri_rand_lipsum(10)
+```
+
+## Carte d'Etat-Major
+
+### Titre 1
+"Lorem ipsum dolor sit amet, pellentesque mauris facilisi, ante et mi. Taciti cum. Duis finibus ligula purus quam finibus urna. Rhoncus duis congue sed massa, id, et sapien massa molestie nisi, sem. Molestie tortor leo nibh purus phasellus, non odio malesuada conubia, eu. Feugiat donec gravida phasellus sed pharetra, maecenas pellentesque eros adipiscing? Sit odio ligula accumsan venenatis et varius, maximus sed potenti rhoncus dolor sem egestas erat nibh, mi. Habitasse ut porttitor nisl eleifend accumsan venenatis. Cras posuere tristique sociosqu torquent. Libero finibus in himenaeos nisi."            "Pharetra in bibendum malesuada in accumsan, ut condimentum. Ac rutrum nibh mauris eu dictum. Ex nibh platea pulvinar efficitur elementum feugiat sociosqu, scelerisque? Per, himenaeos, accumsan, varius consectetur donec ut cubilia maximus vel justo. Convallis velit tempor orci egestas vel, in tempor praesent. Mollis cras, elementum ultrices! Risus nascetur condimentum maximus porttitor vel purus. Amet suspendisse torquent sit at, vel dapibus mauris eget tempor lobortis. Felis fringilla velit nec a cum egestas faucibus mattis efficitur. Torquent malesuada, donec ultrices vulputate tincidunt."     "Vel urna, maecenas dictum a, risus lacinia. Lacus vitae sed ac, bibendum, orci, eu sit diam euismod commodo vel sit! Risus lectus lacus nostra egestas vitae. Maximus ligula, ipsum nec sed eget vulputate taciti. Porttitor ornare bibendum, sociis ut facilisis pretium. Sit velit lorem, adipiscing, porttitor orci netus aenean ullamcorper. Nisl ac non quam justo et quisque, leo in, aliquet. Non in, facilisis eros enim in montes sed, montes feugiat. Auctor varius sit curae penatibus lobortis vel. Et dui egestas sodales, et ut commodo fringilla. Justo, amet dignissim. Torquent habitant orci finibus imperdiet. Vitae dignissim ac urna odio. In quis molestie fusce tellus tellus vitae, inceptos praesent etiam."   
+
+### Titre 2
+"Suscipit conubia fames molestie nam viverra justo in. Hac suscipit libero, blandit et. Lacinia nulla tempor, sit eleifend fusce. Sed finibus nibh erat donec sapien risus vestibulum sollicitudin non in. Nulla aptent tellus viverra a fringilla. Mauris, sollicitudin nunc taciti nunc etiam, non, non. Per gravida porttitor bibendum tempus volutpat justo ut nunc. Porttitor justo justo nulla eros, dignissim mattis aptent. Lorem et vehicula ut mollis sit auctor vivamus sociis. Nam dui luctus, magna. Erat laoreet pellentesque tincidunt ut metus."                                                                                                                                                                                      "Natoque lectus lacinia suspendisse varius. Consectetur ornare tellus. Taciti odio, per. Adipiscing tristique. Eu massa quam at, penatibus eros. Iaculis efficitur erat tincidunt nisl quis egestas. Vel adipiscing mollis vel, amet erat, nostra. Et fames sodales erat mi, vitae cum ornare. Odio orci vitae interdum sed, velit bibendum mollis eros nullam inceptos. Nisl in a nec aliquet vitae sed vitae. Integer lacus gravida, cum quam odio sed arcu mi non."                                  
+
+### Titre 3
+"Odio senectus id leo ex, risus ut vitae a. Amet tempor, nec parturient sollicitudin egestas nunc. Sem natoque nam nascetur sit posuere libero nec pulvinar metus taciti nisl dolor vehicula. Quis dui nunc sed ipsum sed luctus. Ut vehicula euismod nec sit platea in nostra taciti, torquent a eros. Ex risus ad nulla varius aliquam et facilisi nulla volutpat. Aliquam morbi torquent quisque. Platea malesuada dapibus integer tempus nisi, erat laoreet eros, sed fames feugiat dolor. Vel accumsan nibh, augue vel erat vulputate. Phasellus at egestas finibus euismod ac hac non non."                                                                                                                                                  "Nec ex in nunc justo non lacus, maecenas velit tellus id praesent ut. Malesuada scelerisque facilisis ante finibus cubilia tempus erat natoque, dignissim augue. Sem suscipit sit et ipsum proin aliquet. Dictum eu. Blandit fringilla pellentesque, viverra sed praesent venenatis. Metus ut donec ac, vivamus habitant non eu, nunc scelerisque est. Placerat ligula, sit leo dignissim dolor in vivamus? Tincidunt nunc duis egestas in felis suspendisse. Semper volutpat egestas porttitor nulla massa nascetur risus eros."
+
+
+:::
+
+::: {.g-col-7}
+
+
+```{r}
+
+leaflet(height = "calc(-61px + 100vh)", width = "100%") %>% 
+  setView(lat = 48.866, lng = 2.333, zoom = 11) %>% 
+  addWMSTiles(
+    "https://data.geopf.fr/wms-r/wms",
+    layers = "GEOGRAPHICALGRIDSYSTEMS.ETATMAJOR40",
+    options = WMSTileOptions(
+      format = "image/png",
+      transparent = TRUE,
+      version = "1.3.0"
+    ),
+    attribution = "IGN",
+    group = "Carte d'état-major"
+  ) 
+
+```
+
+:::
+
+:::
